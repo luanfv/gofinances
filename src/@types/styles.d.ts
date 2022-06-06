@@ -18,6 +18,12 @@ interface IStyleGuide {
     text: string;
     background: string;
   };
+
+  fonts: {
+    regular: string;
+    medium: string;
+    bold: string;
+  };
 }
 
 declare module 'styled-components/native' {
