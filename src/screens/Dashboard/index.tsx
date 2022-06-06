@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Container,
   Header,
+  Icon,
   User,
   UserGreeting,
   UserInfo,
@@ -29,6 +30,8 @@ function Dashobard() {
               <UserName>Naruto</UserName>
             </User>
           </UserInfo>
+
+          <Icon name="power" />
         </UserWrapper>
       </Header>
     </Container>
