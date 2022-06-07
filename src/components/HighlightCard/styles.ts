@@ -6,7 +6,6 @@ import { AnyStyledComponent } from 'styled-components';
 const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.shape};
   width: ${RFValue(300)}px;
-  height: ${RFValue(300)}px;
   border-radius: 5px;
   padding: 19px 23px ${RFValue(42)}px;
   margin-right: 24px;
