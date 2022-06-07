@@ -1,10 +1,15 @@
 import { RFValue } from 'react-native-responsive-fontsize';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
 import { AnyStyledComponent } from 'styled-components';
 
-const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.shape};
+interface IPropsHighlightCardStyle {
+  type: 'up' | 'down' | 'total';
+};
+
+const Container = styled.View<IPropsHighlightCardStyle>`
+  background-color: ${({ theme, type }) =>
+    type === 'total' ? theme.colors.secondary : theme.colors.shape};
   width: ${RFValue(300)}px;
   border-radius: 5px;
   padding: 19px 23px ${RFValue(42)}px;
@@ -16,28 +21,44 @@ const Header = styled.View`
   justify-content: space-between;
 `;
 
-const Title = styled.Text`
+const Title = styled.Text<IPropsHighlightCardStyle>`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(14)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
+  color: ${({ theme, type }) =>
+    type === 'total' ? theme.colors.shape : theme.colors.text_dark};
 `;
 
-const Icon = styled(Feather as unknown as AnyStyledComponent)`
+const Icon = styled(Feather as unknown as AnyStyledComponent)<IPropsHighlightCardStyle>`
   font-size: ${RFValue(40)}px;
+
+  ${(props: IPropsHighlightCardStyle) => props.type === 'up' && css`
+    color: ${({ theme }) => theme.colors.success};
+  `}
+
+  ${(props: IPropsHighlightCardStyle) => props.type === 'down' && css`
+    color: ${({ theme }) => theme.colors.attention};
+  `}
+
+  ${(props: IPropsHighlightCardStyle) => props.type === 'total' && css`
+    color: ${({ theme }) => theme.colors.shape};
+  `}
 `;
 
 const Footer = styled.View``;
 
-const Amount = styled.Text`
+const Amount = styled.Text<IPropsHighlightCardStyle>`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(32)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
+  color: ${({ theme, type }) =>
+    type === 'total' ? theme.colors.shape : theme.colors.text_dark};
   margin-top: 38px;
 `;
 
-const LastTransaction = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
+const LastTransaction = styled.Text<IPropsHighlightCardStyle>`
+  font-family: ${({ theme, type }) => theme.fonts.regular};
   font-size: ${RFValue(12)}px;
+  color: ${({ theme, type }) =>
+    type === 'total' ? theme.colors.shape : theme.colors.text};
 `;
 
 export {
