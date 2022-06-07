@@ -16,6 +16,7 @@ interface IStyleGuide {
     shape: string;
     title: string;
     text: string;
+    text_dark: string;
     background: string;
   };
 

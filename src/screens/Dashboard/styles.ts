@@ -6,7 +6,6 @@ import { AnyStyledComponent } from 'styled-components';
 const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-
 `;
 
 const Header = styled.View`
@@ -59,6 +58,13 @@ const Icon = styled(Feather as unknown as AnyStyledComponent)`
   font-size: ${RFValue(24)}px;
 `;
 
+const HighlightCards = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+  contentContainerStyle: { paddingLeft: 24 },
+})`
+`;
+
 export {
   Container,
   Header,
@@ -69,4 +75,5 @@ export {
   UserGreeting,
   UserName,
   Icon,
+  HighlightCards,
 };
